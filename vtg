@@ -1,0 +1,193 @@
+stevec = 0, stevecT = 0, okFrame = 0, okForm = 0, testni_prenos = "TP:podatek PRED FUNKCIJO!!";
+function zagon() {
+    try {
+        okFrame = document.getElementsByTagName("frame")[1].contentWindow.document || document.getElementsByTagName("frame")[1].contentDocument.document;
+        stevecT++;
+        //        alert("TRY - okFrame in stevecT " + stevecT + " | " + okFrame);
+    } catch (ba1) {
+        stevecT++;
+        //        alert("CATCH - okFrame in stevecT " + stevecT + " | " + okFrame);
+    }
+    try {
+        okForm = document.body.querySelector("form");
+        stevecT++;
+        //        alert("TRY - okForm in stevecT " + stevecT + " | " + okForm);
+    } catch (ba2) {
+        stevecT++;
+        //        alert("CATCH - okForm in stevecT " + stevecT + " | " + okForm);
+    }
+    //        alert("ZUNAJ - okForm in stevecT " + stevecT + " |\\nokForm: " + okForm+ " |B: " +Boolean(okForm) + " |\\nokFrame: " + okFrame + " |B: " + Boolean(okFrame));
+
+    try {
+        document;
+        testni_prenos = "TP:podatek iz TRY_FRAME !!";
+        var testni_prenos1 = "podatek iz try z FRAME!!";
+        console.log("TESTNI PRENOS 1: " + testni_prenos)
+        var i_prazno, i_uporab, i_stvari, uporab = [], stvari = [], prazno = [];
+        var ok = document.getElementsByTagName("frame")[1].contentWindow.document || document.getElementsByTagName("frame")[1].contentDocument.document;
+        var s = 0
+            , d = ok.querySelectorAll("table")[1].querySelectorAll("td").length;
+        while (d--) {
+            if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/(moveY|moveX|moveUser)/g)) {
+                s++;
+                if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/Click to move/g)) {
+                    //                    alert(""+"PRAZNO INNERHTML: " + ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML);
+                    prazno.push(ok.querySelectorAll("table")[1].querySelectorAll("td")[d]);
+                }
+                //                if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/"(?!(Click to move|Princess|Katie|Chloe|gold|magic|potion|statue))(.*?)"/igm)) {
+                if (!(ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/"(Click to move|Princess|Katie|Chloe|gold|magic|potion|statue)"/igm))) {
+                    //                    alert("UPORABNIK INNERHTML: " + ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML);
+                    uporab.push(ok.querySelectorAll("table")[1].querySelectorAll("td")[d]);
+                }
+                if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/(Katie|Chloe|gold|magic|potion|statue)/ig)) {
+                    //                    alert("STVARI - INNERHTML: " + ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML);
+                    stvari.push(ok.querySelectorAll("table")[1].querySelectorAll("td")[d]);
+                }
+                /*ok.querySelectorAll("table")[1].querySelectorAll("td")[d].querySelector("a").click();*/
+            }
+        }
+        i_prazno = prazno.length;
+        //alert("prazno: " + prazno);
+        i_stvari = stvari.length;
+        i_uporab = uporab.length;
+        //alert("preverjanje... i_prazno: " + i_prazno + " i_stvari: " + i_stvari + " i_uporab: " + i_uporab); '
+        if (i_uporab) {
+            var xu = Math.floor((Math.random() * i_uporab) + 1) - 1;
+            uporab[xu].querySelector("a").click();
+            // setTimeout(()=>{window.close();},3000)
+            // '    uporab[xu].querySelector("a").style.border = "2px dashed blue";' +
+            console.log("i_uporab << izbrano stevilo xu: " + i_uporab + " << " + xu);
+        } else if (i_stvari) {
+            var xs = Math.floor((Math.random() * i_stvari) + 1) - 1;
+            console.log("i_stvari << izbrano stevilo xs: " + i_stvari + " << " + xs);
+            stvari[xs].querySelector("a").click();
+            // setTimeout(()=>{window.close();},3000)
+            // '    stvari[xs].querySelector("a").style.border = "2px dashed red";' +
+        } else if (i_prazno) {
+            var xp = Math.floor((Math.random() * i_prazno) + 1) - 1;
+            //    var xp = Math.floor((Math.random() * i_prazno) + 1) - 1;
+            console.log("i_prazno << izbrano stevilo xp: " + i_prazno + " << " + xp);
+            prazno[xp].querySelector("a").click()
+            // setTimeout(()=>{window.close();},3000)
+            // '    prazno[xp].querySelector("a").style.border = "2px dashed white";' +
+        };
+        stevec++;
+    } catch (ba) {
+        stevec++;
+    }
+    console.log("************ NADALJUJEM ******* NADALJUJEM VSC**********");
+    try {
+        document;
+        testni_prenos = "TP:podatek iz TRY_FORM !!";
+        var testni_prenos2 = "podatek iz try z FORM!!";
+        console.log("TESTNI PRENOS 2: " + testni_prenos)
+        var i_prazno, i_uporab, i_stvari, uporab = [], stvari = [], prazno = [];
+        var ok = document.body.querySelector("form");
+        var s = 0
+            , d = ok.querySelectorAll("table")[1].querySelectorAll("td").length;
+        while (d--) {
+            if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/(moveY|moveX|moveUser)/g)) {
+                s++;
+                if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/Click to move/g)) {
+                    prazno.push(ok.querySelectorAll("table")[1].querySelectorAll("td")[d]);
+                }
+                if (!ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/"(?!(Click to move|Princess|Katie|Chloe|gold|magic|potion|statue))(.*?)"/igm)) {
+                    uporab.push(ok.querySelectorAll("table")[1].querySelectorAll("td")[d]);
+                }
+                if (ok.querySelectorAll("table")[1].querySelectorAll("td")[d].innerHTML.match(/(Katie|Chloe|gold|magic|potion|statue)/ig)) {
+                    stvari.push(ok.querySelectorAll("table")[1].querySelectorAll("td")[d]);
+                }
+                /*ok.querySelectorAll("table")[1].querySelectorAll("td")[d].querySelector("a").click();*/
+            }
+        }
+        i_prazno = prazno.length;
+        i_stvari = stvari.length;
+        i_uporab = uporab.length;
+        if (i_uporab) {
+            var xu = Math.floor((Math.random() * i_uporab) + 1) - 1;
+            // '    uporab[xu].querySelector("a").click();' +
+            uporab[xu].querySelector("a").style.border = "2px solid blue";
+        } else if (i_stvari) {
+            var xs = Math.floor((Math.random() * i_stvari) + 1) - 1;
+            // '    stvari[xs].querySelector("a").click();' +
+            stvari[xs].querySelector("a").style.border = "2px solid red";
+        } else if (i_prazno) {
+            var xp = Math.floor((Math.random() * i_prazno) + 1) - 1;
+            // '    prazno[xp].querySelector("a").click()' +
+            prazno[xp].querySelector("a").style.border = "2px solid black";
+        };
+        stevec++;
+    } catch (ba) {
+        stevec++;
+    }
+    //alert("VGRAJENO!\\nTESTNI PRENOS: " + testni_prenos+ "\\nTestni prenos1= " + testni_prenos1 + "\\nTestni prenos2= " + testni_prenos2+ "\\nOK DOBIM: " + ok);
+
+    // ***********  ***********  ***********  ***********  ***********  *********** ******
+    // *********** TA SETINTERVAL JE ZACASNO UMAKNJEN V  SPODNJIH 4-IH VRSTICAH ******
+    // ***********  ***********  ***********  ***********  ***********  *********** ******
+    
+    setInterval(function () {
+        console.log("klicem funkcijo >> ::ZAPIRAM:: OKNO" + "\\nStanje direkt: " + document.readyState);
+        zapiram();
+    }, 7000);
+
+
+}
+
+function zapiram() {
+    
+    console.log("FUNKCIJA ZAPIRAM!!");
+    var varSlika, napaka=false, napaka_slika=true, ok = okFrame || okForm;
+    try {
+        if (ok.querySelector("h2").innerHTML.match(/error/ig))
+            napaka = true;
+    } catch (zz) { console.log("NI NAPAKE!!!!!! torej je false "); napaka = false; }
+    // try {
+
+     //    console.log("test MATCH vtg: " +document.querySelector("frameset").children[1].contentWindow.document.querySelectorAll("img")[0].src.match(/vtg/ig))
+     //    if (document.querySelector("frameset").children[1].contentWindow.document.querySelectorAll("img")[0].src.match(/vtg/ig)){
+     //     napaka_slika = true;
+     // }
+    // } catch (zaz) { napaka_slika = false; }
+    //    console.log("STEVEC V FUNKCIJI ZAPIRAM JE: " + stevec + " | "+stevecT+" ok.src: " +document.querySelector("frameset").children[1].contentWindow.document.querySelectorAll("img")[0].src+" Boolean: " +Boolean(ok.querySelectorAll("img")[0].src.match(/piratemap/ig))+" okFrame.src: " +okFrame.documentElement.nodeName);
+    //    alert("::zapiram:: pred if je napaka: " + napaka + " | napaka_slika: "+napaka_slika);
+    
+    // try{
+        if(document.querySelectorAll("frame")[1].contentDocument.querySelectorAll("table")[0].querySelectorAll("tr")[1].innerText.match(/You have won/)){
+            console.log("You have won >>> napaka_slika PRVIC true");
+            // setTimeout(()=>{window.close();},2000)
+            // window.close();
+            napaka_slika = true;
+        }
+    // }catch(e){}
+    // try{
+        if(document.querySelectorAll("frame")[1].contentDocument.querySelectorAll("table")[0].querySelectorAll("tr")[1].innerText.match(/Better luck next time/)){
+            console.log("Better luck next time >>> napaka_slika DRUGIC true");
+            // setTimeout(()=>{window.close();},2000)
+            // window.close();
+            napaka_slika = true;
+        }
+    // }catch(e){}
+    
+
+    // /*
+    console.log(">napaka " + napaka);
+    console.log(">napaka bool " + Boolean(napaka));
+    console.log(">napaka_slika: " + napaka_slika);
+    console.log(">napaka_slika: " + Boolean(napaka_slika));
+    console.log("preverjanje >> napaka || napaka_slika >>: " + Boolean(napaka || napaka_slika));
+    // */
+    if (document.readyState == "complete") {
+        if (napaka || napaka_slika)
+            window.close();
+        else {
+                    /*alert("klicem ponovni zagon");*/zagon();
+        }
+    }
+}
+
+setTimeout(function () {
+    //    alert("KLICEM ::ZAGON::");
+    zagon();
+    console.log("PO KLICU ::ZAGON::");
+}, 3000)
